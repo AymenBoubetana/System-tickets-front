@@ -24,3 +24,8 @@ footer{
   text-align: center;
   font-size: 19px;
 }
+
+#crumb_item{
+  list-style: none;
+  color: black;
+}

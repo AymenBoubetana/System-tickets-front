@@ -60,9 +60,9 @@ const Login = () => {
   return (
     <div className="overlay">
       {form_name==='login' &&  
-      <form onSubmit={handleOnSubmit}>
+      <form onSubmit={handleOnSubmit} className='formLogin'>
         <div className="con">
-          <header className="head-form">
+          <header className="headForm">
             <h2>Log In</h2>
             <p>login des employes pour reclamer</p>
           </header>
@@ -105,7 +105,7 @@ const Login = () => {
               />
             </span>
             <br />
-            <button type="submit" className="log-in" id='logg'>Log In</button>
+            <button type="submit" className="btn log-in" id='logg'>Log In</button>
           </div>
           <div className="other">
             <button type="button" className="btn submits frgt-pass" id='pass_fr' onClick={()=>formSwitcher('reset')}>Forgot Password</button>
