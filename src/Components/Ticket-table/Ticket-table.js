@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table } from "react-bootstrap";
-const Tickettable = () => {
+import Faketickets from '../../assets/Data/Faketickets.json'
+const Tickettable = ({tickets}) => {
   return (
     <Table striped bordered hover>
     <thead>
@@ -12,13 +13,24 @@ const Tickettable = () => {
       </tr>
     </thead>
     <tbody>
-      
-          <tr >
-            <td>01</td>
-            <td>impremente</td>
-            <td>en cours</td>
-            <td>12-10-1014</td>
+    {tickets.length ? (
+          tickets.map((row) => (
+            <tr key={row.id}>
+              <td>{row.id}</td>
+              <td>
+              {row.subject}
+              </td>
+              <td>{row.status}</td>
+              <td>{row.addedAt && new Date(row.addedAt).toLocaleString()}</td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="4" className="text-center">
+              No ticket show{" "}
+            </td>
           </tr>
+        )}
     
     </tbody>
   </Table>
