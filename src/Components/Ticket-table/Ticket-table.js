@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table } from "react-bootstrap";
-import Faketickets from '../../assets/Data/Faketickets.json'
+import { Link } from 'react-router-dom';
 const Tickettable = ({tickets}) => {
   return (
     <Table striped bordered hover>
@@ -20,7 +20,9 @@ const Tickettable = ({tickets}) => {
             <tr key={row.id}>
               <td>{row.id}</td>
               <td>
+              <Link to={`/ticket/${row.id}`}>
               {row.subject}
+              </Link>
               </td>
               <td>{row.status}</td>
               <td>{row.addedAt && new Date(row.addedAt).toLocaleString()}</td>

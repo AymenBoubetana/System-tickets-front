@@ -2,6 +2,8 @@ import React from 'react'
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Tickettable from '../../Components/Ticket-table/Ticket-table';
 import PageBreadcrumb from '../../Components/PageBreadCrumb/PageBreadcrumb';
+import Faketickets from '../../assets/Data/Faketickets.json'
+import { Link } from 'react-router-dom';
 const Dashboard = () => {
   return (
     <Container>
@@ -16,14 +18,14 @@ const Dashboard = () => {
   
     <Row>
       <Col className="text-center mt-5 mb-2">
-        
-          <Button
+        <Link to="/add-ticket" >
+        <Button
             variant="info"
             style={{ fontSize: "1.3rem", padding: "10px 30px", marginTop:"-20px"}}
           >
             Add New Ticket
           </Button>
-  
+        </Link>
       </Col>
     </Row>
     <Row>
@@ -38,7 +40,7 @@ const Dashboard = () => {
     <hr />
     <Row>
       <Col className='recent-ticket'>
-      <Tickettable/>
+      <Tickettable tickets={Faketickets}/>
     </Col>
     </Row>
   </Container>

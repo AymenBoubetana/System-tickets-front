@@ -119,9 +119,9 @@ const Login = () => {
 
 
 {form_name==='reset' &&  
-      <form onSubmit={handleresetOnSubmit}>
+      <form onSubmit={handleresetOnSubmit} className='formLogin'>
         <div className="con">
-          <header className="head-form">
+          <header className="headForm">
             <h2>Reset Password</h2>
             <p>Veuillez entrer l'email</p>
           </header>
@@ -143,7 +143,7 @@ const Login = () => {
             <br />
       
             <br />
-            <button type="submit" className="log-in" id='logg'>Reset password</button>
+            <button type="submit" className="btn log-in" id='logg'>Reset password</button>
           </div>
           <div className="other">
             <button type="button" className="btn submits frgt-pass" id='pass_fr' onClick={()=>formSwitcher('login')}>Log In Now</button>

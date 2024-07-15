@@ -5,6 +5,7 @@ import SearchForm from '../../Components/SearchForm/SearchForm'
 import './ListeTicket.css'
 import Tickettable from '../../Components/Ticket-table/Ticket-table'
 import Faketickets from '../../assets/Data/Faketickets.json'
+import { Link } from 'react-router-dom'
 
 
 const ListeTicket = () => {
@@ -35,7 +36,10 @@ const ListeTicket = () => {
       <Row className="mt-4" id='row_center_listes_ticket'>
         <Col>
           
+            <Link to="/add-ticket">
             <Button variant="info" className='btn'>Add New Ticket</Button>
+            
+            </Link>
           
         </Col>
         <Col className="text-right">

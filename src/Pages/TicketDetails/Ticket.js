@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Col, Container, Row } from 'react-bootstrap'
-import PageBreadcrumb from '../../Components/PageBreadCrumb/PageBreadcrumb'
-import Faketickets from '../../assets/Data/Faketickets.json'
-import { MessageHistory } from '../../Components/MessageHistory/Messagehistory'
-import UpdateTicket from '../../Components/UpdateTicket/UpdateTicket'
+import React, { useEffect, useState } from 'react';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import PageBreadcrumb from '../../Components/PageBreadCrumb/PageBreadcrumb';
+import Faketickets from '../../assets/Data/Faketickets.json';
+import { MessageHistory } from '../../Components/MessageHistory/Messagehistory';
+import UpdateTicket from '../../Components/UpdateTicket/UpdateTicket';
+import { useParams } from 'react-router-dom';
 
 const Ticket = () => {
-  const ticket = Faketickets[0];
+  const { tid } = useParams();
+  const [ticket, setTicket] = useState(null);
   const [message, setMessage] = useState("");
-  useEffect(()=>{},[message])
+
+  useEffect(() => {
+    const foundTicket = Faketickets.find(ticket => ticket.id == tid);
+    setTicket(foundTicket);
+  }, [tid]);
 
   const handleOnChange = (e) => {
     setMessage(e.target.value);
@@ -16,8 +22,12 @@ const Ticket = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+  };
+
+  if (!ticket) {
+    return <div>Loading...</div>;
   }
-    
+
   return (
     <Container>
       <Row>
@@ -27,6 +37,7 @@ const Ticket = () => {
       </Row>
       <Row className='d-flex justify-content-between align-items-center mt-2'>
         <Col className='text-weight-bolder text-secondary'>
+          {tid}
           <div className="subject">Sujet : {ticket.subject}</div>
           <div className="date">Date : {ticket.addedAt}</div>
           <div className="status">Status : {ticket.status}</div>
@@ -39,19 +50,20 @@ const Ticket = () => {
           </Button>
         </Col>
       </Row>
+      <hr/>
       <Row>
         <Col>
-        <MessageHistory msg={ticket.history} />
+          {ticket.history && <MessageHistory msg={ticket.history} />}
         </Col>
       </Row>
       <hr/>
       <Row className='mt-4'>
         <Col>
-        <UpdateTicket handleOnSubmit={handleOnSubmit} handleOnChange={handleOnChange} message={message} />
+          <UpdateTicket handleOnSubmit={handleOnSubmit} handleOnChange={handleOnChange} message={message} />
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
 export default Ticket;
