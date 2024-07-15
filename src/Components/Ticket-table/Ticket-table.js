@@ -10,6 +10,8 @@ const Tickettable = ({tickets}) => {
         <th>Subjects</th>
         <th>Status</th>
         <th>Opened Date</th>
+        <th>Fonction</th>
+        <th>Appareil</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +24,8 @@ const Tickettable = ({tickets}) => {
               </td>
               <td>{row.status}</td>
               <td>{row.addedAt && new Date(row.addedAt).toLocaleString()}</td>
+              <td>{row.fonction}</td>
+              <td>{row.Appareil}</td>
             </tr>
           ))
         ) : (
